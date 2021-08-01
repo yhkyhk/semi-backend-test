@@ -1,7 +1,7 @@
 플러터와 장고를 이용한 퀴즈앱 개발
 
 장고 개발
-cd D:\test\flutter_test\quiz_backend_test
+cd D:\\test\\flutter_test\\quiz_backend_test
 
 quiz_backend_test 폴더 생성
 mkdir quiz_backend_test 
@@ -10,7 +10,8 @@ python으로 가상환경 venv 생성
 python -m venv venv
 
 venv 가상환경 실행
-.\venv\Scripts\activate.bat
+call .\venv\Scripts\activate (windows)
+source ./venv/Scripts/activate (linux)
 
 django djangorestframefowk 설치
 pip install django django djangorestframefowk
@@ -73,6 +74,7 @@ heroku cli 버젼 설치
 개발폴더 git 폴더로 설정
 git init
 git add --all
+heroku git:remote -a semi-quiz-test (헤로쿠 웹페이지에서 app 생성한 경우)
 git commit -m "Ready for deploy"
 git remote add origin https://github.com/yhkyhk/drf_quiz_test.git
 git push origin master
@@ -82,17 +84,16 @@ heroku login
 웹브라우저에서 로그인
 
 heroku create drf-quiz-test
+(이렇게 CLI로 헤로쿠 앱을 만들수도 있고 헤로쿠 웹페이지에서 만들수도 있다)
+(헤로쿠 웹페이지에서 만들었다면 git init 한후에 heroku git:remote -a semi-quiz-test 입력)
 drf-quiz-test이 앞으로 url로 사용한 주소
 
+해로쿠에 소스 배포
 git push heroku master
 
+push하여 업로드한 migrations파일로 migrate 진행
 heroku run python manage.py migrate
 
-
-
-
-
-
-
-
+헤로쿠에 배포되면서 db가 초기화되기 때문에 관리자 계정 새로 만듬
+heroku run python manage.py createsuperuser
 
